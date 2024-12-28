@@ -1,7 +1,6 @@
 'use strict'
 
 // XMLHttpRequest, callbacks and promises
-
 // Medium.com Link: https://alicemoretti.medium.com/xmlhttprequest-callbacks-and-promises-257a4e63fe9a
 
 // Function for XMLHttpRequest as per the provided resource link.
@@ -24,31 +23,31 @@ const getData = (resource, callback) => {
 }
 
 
-// getData('https://jsonplaceholder.typicode.com/todos/1', (err, data) => {
-//   console.log(data)
-// })
-// getData('https://jsonplaceholder.typicode.com/todos/2', (err, data) => {
-//   console.log(data)
-// })
-// getData('https://jsonplaceholder.typicode.com/todos/3', (err, data) => {
-//   console.log(data)
-// })
+getData('https://jsonplaceholder.typicode.com/todos/1', (err, data) => {
+  console.log(data)
+})
+getData('https://jsonplaceholder.typicode.com/todos/2', (err, data) => {
+  console.log(data)
+})
+getData('https://jsonplaceholder.typicode.com/todos/3', (err, data) => {
+  console.log(data)
+})
 
 // This getData function behaves asynchronously. means we don't get api data by same order of api call. 
 // Means we may get todos by the order todo2, todo1, todo3 OR todo3, todo1, todo2
 // To get by same order of api call (ie: todo1, todo2, todo3), we have use the below code:
 
-// getData('https://jsonplaceholder.typicode.com/todos/1', (err, data) => {
-//   console.log(data)
-//   // calling for todo2 inside todo1
-//   getData('https://jsonplaceholder.typicode.com/todos/2', (err, data) => {
-//     console.log(data)
-//     // calling for todo3 inside todo2
-//     getData('https://jsonplaceholder.typicode.com/todos/3', (err, data) => {
-//       console.log(data)
-//     })
-//   })
-// })
+getData('https://jsonplaceholder.typicode.com/todos/1', (err, data) => {
+  console.log(data)
+  // calling for todo2 inside todo1
+  getData('https://jsonplaceholder.typicode.com/todos/2', (err, data) => {
+    console.log(data)
+    // calling for todo3 inside todo2
+    getData('https://jsonplaceholder.typicode.com/todos/3', (err, data) => {
+      console.log(data)
+    })
+  })
+})
 
 // This is an example of "callback hell". 
 // Nesting callbacks inside other callbacks which eventually becomes very difficult to maintain.
